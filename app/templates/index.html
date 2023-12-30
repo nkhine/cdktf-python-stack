@@ -5,12 +5,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ title }}</title>
+    <script src="https://unpkg.com/htmx.org@1.9.6/dist/htmx.min.js"></script>
 </head>
 <body>
     <main class="container">
         <div class="bg-light p-5 rounded">
             <h1>{{ title }}</h1>
-            <form id="phraseForm">
+            <form id="phraseForm" hx-post="{{ url_for('generate_phrase') }}" hx-target="#result" hx-swap="innerHTML">
                 <label for="inputString">Input String:</label>
                 <input type="text" id="inputString" name="input_string" required>
                 <button type="submit">Generate Phrase</button>

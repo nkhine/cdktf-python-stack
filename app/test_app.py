@@ -13,9 +13,11 @@ def client():
 
 def test_generate_phrase(client):
     input_data = {"input_string": "elephant"}
-    response = client.post("/generate_phrase", json=input_data)
+    response = client.post("/generate_phrase", data=input_data)
 
+    print(response.get_data(as_text=True))
     assert response.status_code == 200
+
     data = json.loads(response.get_data(as_text=True))
     assert "phrase" in data
     assert "is_palindrome" in data
