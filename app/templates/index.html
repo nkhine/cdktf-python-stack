@@ -1,0 +1,22 @@
+<!-- templates/index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ title }}</title>
+</head>
+<body>
+    <main class="container">
+        <div class="bg-light p-5 rounded">
+            <h1>{{ title }}</h1>
+            <form id="phraseForm">
+                <label for="inputString">Input String:</label>
+                <input type="text" id="inputString" name="input_string" required>
+                <button type="submit">Generate Phrase</button>
+            </form>
+            <div id="result"></div>
+        </div>
+    </main>
+</body>
+</html>
