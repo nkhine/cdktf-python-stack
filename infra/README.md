@@ -1,8 +1,14 @@
 
-cdktf init --template="python" --providers="aws@~>4.0" --local
+Ensure to install
+* cdktf - https://developer.hashicorp.com/terraform/tutorials/cdktf/cdktf-install
 
 ```
-❯ npx cdktf synth
+cdktf init --template="python" --providers="aws@~>4.0" --local
+make deploy
+```
+
+```
+❯ make deploy
 
 Generated Terraform code for the stacks: infra
 

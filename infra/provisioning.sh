@@ -3,7 +3,7 @@
 set -e
 
 print_usage() {
-    echo "Usage: $(basename $0) <deploy|destroy|env>"
+    echo "Usage: $(basename $0) <synth|deploy|destroy|env>"
     exit 1
 }
 
@@ -24,17 +24,25 @@ to_cidr() {
 
 prepare_cdktf_environment() {
     export MY_IP_ADDRESS=$(to_cidr $(get_public_ip))
+    export AWS_PROFILE="aqoon" # CHANGE
+    export S3_BUCKET_NAME="phrasee-cdktf" # CHANGE
+}
+
+synth() {
+    prepare_cdktf_environment
+    echo "Synthesising with MY_IP_ADDRESS=$MY_IP_ADDRESS"
+    npx cdktf synth NetworkingStack EcsStack
 }
 
 deploy() {
     prepare_cdktf_environment
     echo "Deploying with MY_IP_ADDRESS=$MY_IP_ADDRESS"
-    npx cdktf deploy NetworkingStack
+    npx cdktf deploy NetworkingStack EcsStack
 }
 
 destroy() {
     prepare_cdktf_environment
-    npx cdktf destroy NetworkingStack
+    npx cdktf destroy NetworkingStack EcsStack
 }
 
 if [ -z "$1" ]; then
@@ -42,6 +50,9 @@ if [ -z "$1" ]; then
 fi
 
 case "$1" in
+    synth)
+        synth
+        ;;
     deploy)
         deploy
         ;;
