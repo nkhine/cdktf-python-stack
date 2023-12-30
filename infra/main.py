@@ -1,16 +1,16 @@
 #!/usr/bin/env python
-from constructs import Construct
-from cdktf import App, TerraformStack
+from cdktf import App
+from stacks.networking_stack import NetworkingStack, NetworkingStackConfig
 
-
-class MyStack(TerraformStack):
-    def __init__(self, scope: Construct, id: str):
-        super().__init__(scope, id)
-
-        # define resources here
-
-
+TAG_NAME_PREFIX = "phrasee-stack-"
 app = App()
-MyStack(app, "infra")
+
+networking_stack = NetworkingStack(
+    app,
+    "NetworkingStack",
+    NetworkingStackConfig(
+        tag_name_prefix=TAG_NAME_PREFIX,
+    ),
+)
 
 app.synth()
