@@ -1,0 +1,22 @@
+[tool.poetry]
+name = "phrasee"
+version = "1.0.0"
+description = ""
+authors = ["Norman Khine <norman@khine.net>"]
+
+[tool.poetry.dependencies]
+python = ">=3.9"
+Flask = "^2.3.0"
+gunicorn = "^21.0.0"
+numpy = "^1.21.0"
+
+[tool.poetry.dev-dependencies]
+pytest = "^7.4.3"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry.scripts]
+phrasee = "run.py"
+
