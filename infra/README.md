@@ -4,7 +4,6 @@ Ensure to install
 
 ```
 cdktf init --template="python" --providers="aws@~>4.0" --local
-make deploy
 ```
 
 ```
